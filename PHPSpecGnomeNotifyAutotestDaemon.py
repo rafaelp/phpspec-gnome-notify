@@ -1,6 +1,15 @@
 #!/usr/bin/env python  
-# coding: utf-8  
-# monitor.py 20071108 AF  
+# PHPSpecGnomeNotify v0.1.1
+# Rafael Lima (http://rafael.adm.br)
+# http://rafael.adm.br/phpspec_gnome_notify
+# License: http://creativecommons.org/licenses/by/2.5/
+
+# Dependencies:
+
+# * pyinotify
+#  sudo apt-get install python-pyinotify
+
+*/
    
 import os, sys, re
 from pyinotify import WatchManager, Notifier, ProcessEvent, EventsCodes  

@@ -16,7 +16,7 @@ Dependencies:
 * libnotify
   sudo apt-get install libnotify-bin
 
-* pyinotify
+* pyinotify (for AutotestDaemon)
   sudo apt-get install python-pyinotify
 
 */
