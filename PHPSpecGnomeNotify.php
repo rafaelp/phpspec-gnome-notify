@@ -3,7 +3,7 @@
 
 /*
 PHPSpecGnomeNotify v0.1.1
-Rafael Lima (http://rafael.adm.br)
+Rafael Lima (http://rafael.adm.br) at Myfreecomm (http://myfreecomm.com.br)
 http://rafael.adm.br/phpspec_gnome_notify
 License: http://creativecommons.org/licenses/by/2.5/
 
@@ -33,27 +33,34 @@ class PHPSpecGnomeNotify {
     chdir($path);
     $command = 'phpspec '.$this->phpspec_options;
     
-    $return = shell_exec($command);
-
-    $lines = split("\n",$return);
-    foreach($lines as $line) {
-      if(preg_match('/^([0-9]+) example/', $line, $matches)) {
-        $examples = $matches[1];
-        preg_match('/([0-9]+) failure/', $line, $matches);
-        $failures = $matches[1];
-        preg_match('/([0-9]+) pending/', $line, $matches);
-        $pendings = $matches[1];
-      }
-    }
-
-    if($failures > 0) {
-      $this->notify("Tests Failed", $failures.(($failures == 1) ? " test failed" :  " tests failed"), $this->fail_image);
-    }
-    elseif($pendings > 0) {
-      $this->notify("Tests Pending", $pendings.(($pendings == 1) ? " test is pending" : " tests are pending"), $this->pending_image);
+    exec($command, $return, $status);
+    if($status != 0) {
+      $this->expiration_in_secs = 5;
+      $this->notify("Error running test", $return[1], $this->fail_image);
     }
     else {
-      $this->notify("Tests Passed", "All tests passed", $this->success_image);
+      $output = join("\n",$return);
+      echo $output;
+      
+      foreach($return as $line) {
+        if(preg_match('/^([0-9]+) example/', $line, $matches)) {
+          $examples = $matches[1];
+          preg_match('/([0-9]+) failure/', $line, $matches);
+          $failures = $matches[1];
+          preg_match('/([0-9]+) pending/', $line, $matches);
+          $pendings = $matches[1];
+        }
+      }
+
+      if($failures > 0) {
+        $this->notify("Tests Failed", $failures."/".$examples.(($failures == 1) ? " test failed" :  " tests failed"), $this->fail_image);
+      }
+      elseif($pendings > 0) {
+        $this->notify("Tests Pending", $pendings."/".$examples.(($pendings == 1) ? " test is pending" : " tests are pending"), $this->pending_image);
+      }
+      else {
+        $this->notify("Tests Passed", "All ".$examples." tests passed", $this->success_image);
+      }
     }
   }
   
