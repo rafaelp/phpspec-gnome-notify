@@ -21,7 +21,7 @@ def Monitor():
     class close_event(ProcessEvent):  
         def process_IN_CLOSE(self, event):  
             f = event.name and os.path.join(event.path, event.name) or event.path  
-            if re.compile('Describe(.*)\.php$').search(f, 1):
+            if re.compile('(.*)\.php$').search(f, 1):
               output = os.popen(PHPSpecGnomeNotify).read()
               print output
 
