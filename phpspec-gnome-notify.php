@@ -2,9 +2,9 @@
 <?php
 
 /*
-PHPSpecGnomeNotify v0.1.1
+phpspec-gnome-notify v0.1.1
 Rafael Lima (http://rafael.adm.br) at Myfreecomm (http://myfreecomm.com.br)
-http://rafael.adm.br/phpspec_gnome_notify
+http://rafael.adm.br/phpspec-gnome-notify
 License: http://creativecommons.org/licenses/by/2.5/
 
 Dependencies:

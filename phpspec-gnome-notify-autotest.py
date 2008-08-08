@@ -1,8 +1,8 @@
 #!/usr/bin/env python  
 #encoding: utf-8
-# PHPSpecGnomeNotify v0.1.1
+# phpspec-gnome-notify v0.1.1
 # Rafael Lima (http://rafael.adm.br) at Myfreecomm (http://myfreecomm.com.br)
-# http://rafael.adm.br/phpspec_gnome_notify
+# http://rafael.adm.br/phpspec-gnome-notify
 # License: http://creativecommons.org/licenses/by/2.5/
 
 # Dependencies:
@@ -13,7 +13,7 @@
 import os, sys, re
 from pyinotify import WatchManager, Notifier, ProcessEvent, EventsCodes  
 
-PHPSpecGnomeNotify = os.getcwd()+'/'+os.path.dirname(__file__)+"/PHPSpecGnomeNotify.php"
+PHPSpecGnomeNotify = os.getcwd()+'/'+os.path.dirname(__file__)+"/phpspec-gnome-notify.php"
 
 wm = WatchManager()
 
@@ -46,7 +46,7 @@ if __name__ == '__main__':
   
     for path in dirlist:  
         os.chdir(os.getcwd()+'/'+path)
-        print 'monitorando %s' % os.getcwd()
+        print 'monitoring %s' % os.getcwd()
         wm.add_watch(os.getcwd(), EventsCodes.IN_CLOSE_WRITE, rec=True)  
   
     Monitor()
