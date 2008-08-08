@@ -45,7 +45,7 @@ if __name__ == '__main__':
         sys.exit(1)  
   
     for path in dirlist:  
-        os.chdir(os.getcwd()+'/'+path)
+        os.chdir(path)
         print 'monitoring %s' % os.getcwd()
         wm.add_watch(os.getcwd(), EventsCodes.IN_CLOSE_WRITE, rec=True)  
   
