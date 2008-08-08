@@ -34,9 +34,9 @@ EXAMPLE OF FILE STRUCTURE
     MyModel.php
 
     myfirsproject/tests:
-    MyModelCreate.test.php
-    MyModelUpdate.test.php
-    MyModelRead.test.php
+    DescribeMyModelCreate.php
+    DescribeMyModelUpdate.php
+    DescribeMyModelRead.php
 
 Licence
 --------
