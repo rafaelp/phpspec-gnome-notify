@@ -27,11 +27,12 @@ class PHPSpecGnomeNotify {
   private $fail_image    = "gtk-dialog-error";
   private $pending_image = "gtk-dialog-warning";
   private $success_image = "gtk-dialog-info";
+  public $phpspec = "phpspec";
   private $phpspec_options = "--recursive";
 
   public function run($path = '.') {
     chdir($path);
-    $command = 'phpspec '.$this->phpspec_options;
+    $command = $this->phpspec.' '.$this->phpspec_options;
     
     exec($command, $return, $status);
     if($status != 0) {
@@ -71,10 +72,18 @@ class PHPSpecGnomeNotify {
 
 }
 
-$path = $argv[1];
+print_r($argv);
+
+$phpspec_path = $argv[1];
+if(empty($phpspec_path)) {
+  $phpspec_path = 'phpspec';
+}
+
+$path = $argv[2];
 if(empty($path)) $path = getcwd();
 
 $test = new PHPSpecGnomeNotify();
+$test->phpspec = $phpspec_path;
 $test->run($path);
 
 ?>

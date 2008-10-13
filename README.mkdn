@@ -14,11 +14,11 @@ written in PHPSpec on Gnome Desktop.
 
 ## USAGE
 
-    ./phpspec-gnomenotify/phpspec-gnome-notify-autotest.py [path of your project]
+    ./phpspec-gnomenotify/phpspec-gnome-notify-autotest.py [path of phpspec] [path of your project]
 
 ## EXAMPLE OF FILE STRUCTURE
 
-    $ ./phpspec-gnomenotify/phpspec-gnome-notify-autotest.py /home/user/projects/myfirstproject
+    $ ./phpspec-gnomenotify/phpspec-gnome-notify-autotest.py /usr/bin/phpspec /home/user/projects/myfirstproject
 
     $ ls -R myfirstproject
 

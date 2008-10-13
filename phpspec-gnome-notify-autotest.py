@@ -13,8 +13,6 @@
 import os, sys, re
 from pyinotify import WatchManager, Notifier, ProcessEvent, EventsCodes  
 
-PHPSpecGnomeNotify = os.getcwd()+'/'+os.path.dirname(__file__)+"/phpspec-gnome-notify.php"
-
 wm = WatchManager()
 
 def Monitor():  
@@ -38,10 +36,14 @@ def Monitor():
   
 if __name__ == '__main__':  
     try:  
-        dirlist = sys.argv[1:]  
+        phpspec_path = sys.argv[1]
+        phpspec_path = os.path.realpath(phpspec_path)
+        PHPSpecGnomeNotify = os.getcwd()+'/'+os.path.dirname(__file__)+"/phpspec-gnome-notify.php "+phpspec_path
+
+        dirlist = sys.argv[2:]
         if not len(dirlist): raise Exception  
     except:  
-        print 'use: %s [path]' % sys.argv[0]
+        print 'use: %s [path] [phpspec_path]' % sys.argv[0]
         sys.exit(1)  
   
     for path in dirlist:  
