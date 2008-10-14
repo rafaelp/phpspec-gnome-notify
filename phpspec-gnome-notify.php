@@ -72,8 +72,6 @@ class PHPSpecGnomeNotify {
 
 }
 
-print_r($argv);
-
 $phpspec_path = $argv[1];
 if(empty($phpspec_path)) {
   $phpspec_path = 'phpspec';
