@@ -73,9 +73,10 @@ class PHPSpecGnomeNotify {
 }
 
 $phpspec_path = $argv[1];
-if(empty($phpspec_path)) {
+if(empty($phpspec_path))
   $phpspec_path = 'phpspec';
-}
+else
+  $phpspec_path = realpath($phpspec_path);
 
 $path = $argv[2];
 if(empty($path)) $path = getcwd();

@@ -43,12 +43,13 @@ if __name__ == '__main__':
         dirlist = sys.argv[2:]
         if not len(dirlist): raise Exception  
     except:  
-        print 'use: %s [path] [phpspec_path]' % sys.argv[0]
+        print 'use: %s [phpspec_path] [path]' % sys.argv[0]
         sys.exit(1)  
   
     for path in dirlist:  
         os.chdir(path)
         print 'monitoring %s' % os.getcwd()
         wm.add_watch(os.getcwd(), EventsCodes.IN_CLOSE_WRITE, rec=True)  
+        print os.popen(PHPSpecGnomeNotify).read()
   
     Monitor()
